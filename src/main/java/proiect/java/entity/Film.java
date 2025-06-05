@@ -1,20 +1,18 @@
 package proiect.java.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity
-@Table(name="filme")
+@Table(name = "filme")
 public class Film {
-    @Id
-    @Column(name="id_film", length=20)
-    private String idFilm; //ID unic pentru film
 
-    @Column(name="id_utilizator")
-    private Long idUtilizator; //ID-ul utilizatorului care a adaugat filmul
+    @Id
+    @Column(name = "id_film", length = 20)
+    private String idFilm; // ID unic pentru film (ex: IMDB ID sau cod intern)
+
+    @Column(name = "id_utilizator")
+    private Long idUtilizator; // ID-ul utilizatorului care a adăugat filmul
 
     @NotBlank(message = "Titlul este obligatoriu")
     @Size(max = 200, message = "Titlul nu poate depăși 200 de caractere")
@@ -23,7 +21,7 @@ public class Film {
 
     @NotBlank(message = "Regizorul este obligatoriu")
     @Size(max = 100, message = "Numele regizorului nu poate depăși 100 de caractere")
-    @Column(name="regizor", nullable = false, length=50)
+    @Column(name = "regizor", nullable = false, length = 100)
     private String regizor;
 
     @NotBlank(message = "Genul este obligatoriu")
@@ -49,7 +47,7 @@ public class Film {
 
     @Size(max = 20, message = "Rating-ul nu poate depăși 20 de caractere")
     @Column(name = "rating", length = 20)
-    private String rating;
+    private String rating; // G, PG, PG-13, R, NC-17, etc.
 
     @DecimalMin(value = "0.0", message = "Rating-ul IMDB nu poate fi negativ")
     @DecimalMax(value = "10.0", message = "Rating-ul IMDB nu poate depăși 10.0")
@@ -60,125 +58,62 @@ public class Film {
     @Column(name = "pret", precision = 10, scale = 2)
     private Double pret; // pentru achiziționare/închiriere
 
-    public Film() {
-    }
+    // Constructors
+    public Film() {}
 
-    public Film(String idFilm, Long idUtilizator, String titlu, String regizor, Integer anulLansarii, String gen, Integer durataMinute, String taraOrigine, String rating, Double ratingImdb, Double pret) {
+    public Film(String idFilm, String titlu, String regizor, String gen,
+                Integer anulLansarii, Integer durataMinute) {
         this.idFilm = idFilm;
-        this.idUtilizator = idUtilizator;
         this.titlu = titlu;
         this.regizor = regizor;
-        this.anulLansarii = anulLansarii;
         this.gen = gen;
-        this.durataMinute = durataMinute;
-        this.taraOrigine = taraOrigine;
-        this.rating = rating;
-        this.ratingImdb = ratingImdb;
-        this.pret = pret;
-    }
-
-    public String getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(String idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    public Double getPret() {
-        return pret;
-    }
-
-    public void setPret(Double pret) {
-        this.pret = pret;
-    }
-
-    public Double getRatingImdb() {
-        return ratingImdb;
-    }
-
-    public void setRatingImdb(Double ratingImdb) {
-        this.ratingImdb = ratingImdb;
-    }
-
-    public Long getIdUtilizator() {
-        return idUtilizator;
-    }
-
-    public void setIdUtilizator(Long idUtilizator) {
-        this.idUtilizator = idUtilizator;
-    }
-
-    public String getTitlu() {
-        return titlu;
-    }
-
-    public void setTitlu(String titlu) {
-        this.titlu = titlu;
-    }
-
-    public String getRegizor() {
-        return regizor;
-    }
-
-    public void setRegizor(String regizor) {
-        this.regizor = regizor;
-    }
-
-    public String getGen() {
-        return gen;
-    }
-
-    public void setGen(String gen) {
-        this.gen = gen;
-    }
-
-    public Integer getAnulLansarii() {
-        return anulLansarii;
-    }
-
-    public void setAnulLansarii(Integer anulLansarii) {
         this.anulLansarii = anulLansarii;
-    }
-
-    public Integer getDurataMinute() {
-        return durataMinute;
-    }
-
-    public void setDurataMinute(Integer durataMinute) {
         this.durataMinute = durataMinute;
     }
 
-    public String getTaraOrigine() {
-        return taraOrigine;
-    }
+    // Getters and Setters
+    public String getIdFilm() { return idFilm; }
+    public void setIdFilm(String idFilm) { this.idFilm = idFilm; }
 
-    public void setTaraOrigine(String taraOrigine) {
-        this.taraOrigine = taraOrigine;
-    }
+    public Long getIdUtilizator() { return idUtilizator; }
+    public void setIdUtilizator(Long idUtilizator) { this.idUtilizator = idUtilizator; }
 
-    public String getRating() {
-        return rating;
-    }
+    public String getTitlu() { return titlu; }
+    public void setTitlu(String titlu) { this.titlu = titlu; }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
+    public String getRegizor() { return regizor; }
+    public void setRegizor(String regizor) { this.regizor = regizor; }
+
+    public String getGen() { return gen; }
+    public void setGen(String gen) { this.gen = gen; }
+
+    public Integer getAnulLansarii() { return anulLansarii; }
+    public void setAnulLansarii(Integer anulLansarii) { this.anulLansarii = anulLansarii; }
+
+    public Integer getDurataMinute() { return durataMinute; }
+    public void setDurataMinute(Integer durataMinute) { this.durataMinute = durataMinute; }
+
+    public String getTaraOrigine() { return taraOrigine; }
+    public void setTaraOrigine(String taraOrigine) { this.taraOrigine = taraOrigine; }
+
+    public String getRating() { return rating; }
+    public void setRating(String rating) { this.rating = rating; }
+
+    public Double getRatingImdb() { return ratingImdb; }
+    public void setRatingImdb(Double ratingImdb) { this.ratingImdb = ratingImdb; }
+
+    public Double getPret() { return pret; }
+    public void setPret(Double pret) { this.pret = pret; }
 
     @Override
     public String toString() {
         return "Film{" +
                 "idFilm='" + idFilm + '\'' +
-                ", idUtilizator=" + idUtilizator +
                 ", titlu='" + titlu + '\'' +
                 ", regizor='" + regizor + '\'' +
                 ", gen='" + gen + '\'' +
                 ", anulLansarii=" + anulLansarii +
                 ", durataMinute=" + durataMinute +
-                ", taraOrigine='" + taraOrigine + '\'' +
-                ", rating='" + rating + '\'' +
-                ", ratingImdb=" + ratingImdb +
-                ", pret=" + pret +
                 '}';
     }
 }
