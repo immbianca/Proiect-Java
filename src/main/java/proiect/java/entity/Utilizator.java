@@ -28,12 +28,12 @@ public class Utilizator {
 
     @NotBlank(message = "Rolul este obligatoriu")
     @Column(name = "rol", nullable = false, length = 20)
-    private Rol rol;// ROLE_USER sau ROLE_EDITOR
+    private String rol;// ROLE_USER sau ROLE_EDITOR
 
     public Utilizator() {
     }
 
-    public Utilizator(Long idUtilizator, String nume, String utilizator, String parola, Rol rol) {
+    public Utilizator(Long idUtilizator, String nume, String utilizator, String parola, String rol) {
         this.idUtilizator = idUtilizator;
         this.nume = nume;
         this.utilizator = utilizator;
@@ -73,11 +73,11 @@ public class Utilizator {
         this.parola = parola;
     }
 
-    public Rol getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
