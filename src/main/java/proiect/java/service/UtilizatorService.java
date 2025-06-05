@@ -24,7 +24,7 @@ public class UtilizatorService implements UserDetailsService {
     @Autowired
     private UserRepository utilizatorRepository;
 
-   // @Autowired
+   @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     // Implementarea pentru Spring Security
