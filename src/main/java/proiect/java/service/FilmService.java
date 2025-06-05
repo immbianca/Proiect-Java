@@ -50,4 +50,26 @@ public class FilmService {
         return filmRepository.findByFilters(titluParam,genParam,regizorParam);
     }
 
+    //Gaseste filme dupa an
+
+    //Gaseste filme dupa regizor
+
+    //Gaseste film dupa titlu
+
+    //Gaseste film dupa anul lansarii
+
+    //Gaseste filme dintr-un interval de ani
+
+    //Gaseste filme cu rating IMDB mai mare sau egal cu valoarea data
+
+    //Gaseste filme dupa tara de origine
+
+    //Gaseste filme adaugate de un utilizator specific
+
+    //Actializeaza un film Existent
+
+
+
+
+
 }
